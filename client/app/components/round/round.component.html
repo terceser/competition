@@ -1,0 +1,189 @@
+<div class="wrapper" style="background-color:rgba(218, 218, 218, 0.733);">
+    <div class="page-header" data-parallax="true" style="background-image: url('../assets/img/fabio-mangione.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="motto text-center" *ngIf="!round">
+                <h3 class="text-center">
+                    <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                </h3>
+            </div>
+            <div class="motto text-center" style="min-height:calc(100vh - 100px)" *ngIf="round">
+                <div class="content">
+                    <h3 style="margin-top:100px;margin-bottom:50px;">{{round.title}}
+                        <br>
+                        <small>
+                            {{round.description}}</small>
+                    </h3>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="nav-tabs-navigation">
+                            <div class="nav-tabs-wrapper">
+                                <ngb-tabset [justify]="'center'">
+                                    <ngb-tab title="Round">
+                                        <ng-template ngbTabContent>
+                                            <div class="row vertical-align justify-content-center">
+                                                <div class="col-6">
+                                                    <img src="{{round.url_image}}" alt="Circle Image"
+                                                        class="img-rounded img-border-white img-responsive"
+                                                        style="background-color:rgb(255, 255, 255)"
+                                                        (click)="changeImage(round)">
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class='row vertical-align'>
+                                                        <div class="col-2">
+                                                            <h6>
+                                                                <img src="{{vv.avatar}}" alt="Circle Image"
+                                                                    class="img-circle img-no-padding img-avatar"
+                                                                    style="width: 50px;margin-top:9px"> {{vv.nickname}}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <ngb-progressbar type="success"
+                                                                [value]="getTrigger(vv).length"
+                                                                [max]="round.max_trigger">{{getTrigger(vv).length}}
+                                                            </ngb-progressbar>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <a class="btn btn-success pull-right"
+                                                                (click)="addTrigger(vv)">
+                                                                <span class="fa fa-plus"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class='row vertical-align'>
+                                                        <div class="col-2">
+                                                            <h6>
+                                                                <img src="{{mh.avatar}}" alt="Circle Image"
+                                                                    class="img-circle img-no-padding img-avatar"
+                                                                    style="width: 50px;margin-top:9px"> {{mh.nickname}}
+                                                            </h6>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <ngb-progressbar type="success"
+                                                                [value]="getTrigger(mh).length"
+                                                                [max]="round.max_trigger">{{getTrigger(mh).length}}
+                                                            </ngb-progressbar>
+                                                        </div>
+                                                        <div class="col-2">
+                                                            <a class="btn btn-success pull-right">
+                                                                <span class="fa fa-plus"
+                                                                    (click)="addTrigger(mh)"></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-tab>
+                                    <ngb-tab title="History">
+                                        <ng-template ngbTabContent>
+                                            <div *ngIf="round.triggers">
+                                                <div role="alert" class="alert alert-success"
+                                                    *ngFor="let history of round.triggers">
+                                                    <div class="container">
+                                                        <div class="row vertical-align">
+                                                            <div class="col-2">
+                                                                <img src="{{getAvatar(history.source)}}"
+                                                                    alt="Circle Image"
+                                                                    class="img-circle img-no-padding img-avatar"
+                                                                    style="width: 50px;margin-top:9px">
+                                                            </div>
+                                                            <div class="col-8">
+                                                                <h6>
+                                                                    {{history.comment}}
+                                                                </h6>
+                                                            </div>
+                                                            <div class="col-2">
+                                                                <h6 class="text-center">
+                                                                    {{getDateFr(history.createdDate)}}
+                                                                    <br> {{getTimeFr(history.createdDate)}}
+                                                                </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </ng-template>
+                                    </ngb-tab>
+                                </ngb-tabset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="row vertical-align justify-content-center">
+                            <div class="col-6">
+                                <img src="../assets/img/trophy.png" alt="Circle Image" class="img-rounded img-border-white img-responsive"  style="background-color:rgb(255, 255, 255)">
+                            </div>
+                            <div class="col-12">
+                                <div class='row vertical-align'>
+                                    <div class="col-2">
+                                        <h6>
+                                            <img src="{{vv.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-avatar" style="width: 50px;margin-top:9px"> {{vv.nickname}}
+                                        </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <ngb-progressbar type="success" [value]="getTrigger(vv).length" [max]="round.max_trigger">{{getTrigger(vv).length}}</ngb-progressbar>
+                                    </div>
+                                    <div class="col-2">
+                                        <a class="btn btn-success pull-right" (click)="addTrigger(vv)">
+                                            <span class="fa fa-plus"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class='row vertical-align'>
+                                    <div class="col-2">
+                                        <h6>
+                                            <img src="{{mh.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-avatar" style="width: 50px;margin-top:9px"> {{mh.nickname}}
+                                        </h6>
+                                    </div>
+                                    <div class="col-8">
+                                        <ngb-progressbar type="success" [value]="getTrigger(mh).length" [max]="round.max_trigger">{{getTrigger(mh).length}}</ngb-progressbar>
+                                    </div>
+                                    <div class="col-2">
+                                        <a class="btn btn-success pull-right">
+                                            <span class="fa fa-plus" (click)="addTrigger(mh)"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h5>History</h5>
+                        <div *ngIf="round.triggers">
+                            <div role="alert" class="alert alert-success" *ngFor="let history of round.triggers">
+                                <div class="container">
+                                    <div class="row vertical-align">
+                                        <div class="col-2">
+                                            <img src="{{getAvatar(history.source)}}" alt="Circle Image" class="img-circle img-no-padding img-avatar" style="width: 50px;margin-top:9px">
+                                        </div>
+                                        <div class="col-8">
+                                            <h6>
+                                                {{history.comment}}
+                                            </h6>
+                                        </div>
+                                        <div class="col-2">
+                                            <h6 class="text-center">
+                                                {{getDateFr(history.createdDate)}}
+                                                <br> {{getTimeFr(history.createdDate)}}
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
