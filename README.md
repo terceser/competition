@@ -23,3 +23,4 @@ Open sourced from private GitLab repo (2017)
 - Update to Angular v9
 - Clean code
 - Fix tests...
+- Split to front & back app

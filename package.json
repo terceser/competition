@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:client && node competition.js",
+    "start": "node competition.js",
     "build:client": "ng build",
     "test:client": "ng test",
     "lint:client": "ng lint"
