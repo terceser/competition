@@ -1,0 +1,75 @@
+<div class="card card-round" data-background="image"
+    style="cursor:pointer;background-image: url('../assets/img/uriel-soberanes.jpg')" (click)="goToRound(round)"
+    *ngIf="!round.id_winner">
+    <div>
+        <h3 class="text-center">{{round.title}}
+            <br>
+            <small>{{round.description}}</small>
+        </h3>
+        <div class="row vertical-align">
+            <div class="col-2">
+                <img src="{{round.url_image}}" alt="Circle Image" class="img-rounded img-border-white img-responsive"
+                    style="background-color:rgba(255, 255, 255, 0.8);">
+            </div>
+            <div class="col-10">
+                <div class='row vertical-align'>
+                    <div class="col-2">
+                        <h6 class="text-center">
+                            <img src="{{vv.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-avatar"
+                                style="width: 100%;max-width:50px;margin-top:9px">
+                            {{isPhoneOrTablet() ? "" : "&nbsp;"+vv.nickname+"&nbsp;"}}
+                        </h6>
+                    </div>
+                    <div class="col-8">
+                        <ngb-progressbar type="success" [value]="getTrigger(round,vv).length" [max]="round.max_trigger">
+                            {{getTrigger(round,vv).length}}</ngb-progressbar>
+                    </div>
+                    <div class="col-2">
+                        <a class="btn btn-block text-center no-padding btn-success pull-right"
+                            style="padding-left:0px; padding-right:0px" (click)="addTrigger($event,round,true)">
+                            <span class="fa fa-plus"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class='row vertical-align'>
+                    <div class="col-2">
+                        <h6 class="text-center">
+                            <img src="{{mh.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-avatar"
+                                style="width: 100%;max-width:50px;margin-top:9px">
+                            {{isPhoneOrTablet() ? "" : mh.nickname}}
+                        </h6>
+                    </div>
+                    <div class="col-8">
+                        <ngb-progressbar type="success" [value]="getTrigger(round,mh).length" [max]="round.max_trigger">
+                            {{getTrigger(round,mh).length}}</ngb-progressbar>
+                    </div>
+                    <div class="col-2">
+                        <a class="btn btn-block text-center no-padding btn-success pull-right"
+                            style="padding-left:0px; padding-right:0px" (click)="addTrigger($event,round)">
+                            <span class="fa fa-plus"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card card-round" data-background="image"
+    style="cursor:pointer;background-image: url('../assets/img/joshua-stannard.jpg')" (click)="goToRound(round)"
+    *ngIf="round.id_winner">
+    <div>
+        <div class="pull-left" style="margin-top:5px;">
+            <img src="{{round.url_image}}" alt="Circle Image" class="img-rounded img-border-white img-responsive"
+                style="height:70px;background-color:rgba(255, 255, 255, 0.9)">
+        </div>
+        <div class="pull-right">
+            <img src="{{getWinner(round).avatar}}" alt="Circle Image" class="img-circle img-no-padding img-avatar"
+                style="height: 70px;margin-top:9px"> <b>{{getWinner(round).nickname}}</b>
+        </div>
+        <h3 class="text-center" style="margin-top:10px;"><b>{{round.title}}</b>
+            <br>
+            <small style="color:#fff">{{round.description}}</small>
+        </h3>
+    </div>
+</div>

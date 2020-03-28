@@ -1,0 +1,50 @@
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+        style="background-image: url('../assets/img/fabio-mangione.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="section profile-content" *ngIf="trophy">
+        <div class="row" style="margin-left:0px;margin-right:0px">
+            <div class="col-md-4 col-6 mx-auto">
+                <div class="owner">
+                    <div class="avatar">
+                        <img src="{{vv.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="name">
+                        <h4 class="title">{{vv.nickname}}
+                            <br />
+                        </h4>
+                        <!--<h6 class="description">{{vv.email}}</h6>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-6 mx-auto text-center" *ngFor="let trophy of getTrophy(vv)">
+                        <img src="{{trophy.url_image}}" alt="Circle Image"
+                            class="img-rounded img-border-white img-responsive">
+                        <!--<h5 style="white-space:normal;overflow:hidden;text-overflow:ellipsis">{{trophy.title}}</h5>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mx-auto">
+                <div class="owner">
+                    <div class="avatar">
+                        <img src="{{mh.avatar}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                    </div>
+                    <div class="name">
+                        <h4 class="title">{{mh.nickname}}
+                            <br />
+                        </h4>
+                        <!--<h6 class="description">{{mh.email}}</h6>-->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-6 mx-auto text-center" *ngFor="let trophy of getTrophy(mh)">
+                        <img src="{{trophy.url_image}}" alt="Circle Image"
+                            class="img-rounded img-border-black img-responsive">
+                        <!--<h5 style="white-space:normal;overflow:hidden;text-overflow:ellipsis">{{trophy.title}}</h5>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
