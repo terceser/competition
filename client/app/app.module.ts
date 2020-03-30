@@ -37,20 +37,19 @@ import { UsersService } from './services/users.service';
     RoundCardComponent,
     SearchPipe
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    NgbModule.forRoot(),
-    FormsModule,
-    RouterModule,
-    HomeModule,
-    AppRoutingModule
+  imports: [BrowserModule, HttpClientModule, NgbModule, FormsModule, RouterModule, HomeModule, AppRoutingModule],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    AppService,
+    AuthGuard,
+    AuthenticationService,
+    RoundsService,
+    UsersService
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true,
-  }, AppService, AuthGuard, AuthenticationService, RoundsService, UsersService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

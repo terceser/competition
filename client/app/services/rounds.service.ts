@@ -1,45 +1,36 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
-import { Round } from '../models/Round';
+import { IRound, Round } from '../models/Round';
+import { Trigger } from '../models/Trigger';
+import { User } from '../models/User';
 
 @Injectable()
 export class RoundsService {
-    rounds: Round[];
-    constructor(private http: HttpClient) {
+  constructor(private readonly http: HttpClient) {}
 
-    }
+  public getAll(): Observable<IRound[]> {
+    return this.http.get<IRound[]>('/api/rounds');
+  }
 
-    getAll() {
-        return this.http.get<any>('/api/rounds');
-    }
+  public add(round: Round): Observable<IRound> {
+    round.author = { id: Number(localStorage.getItem('user_id')) } as User;
 
-    add(round) {
-        round.author = { id: localStorage.getItem('user_id') };
-        return this.http.post<any>('/api/rounds', round);
-    }
+    return this.http.post<IRound>('/api/rounds', round);
+  }
 
-    get(idRound) {
-        return this.http.get<any>('/api/rounds/' + idRound);
-    }
+  public get(idRound: number): Observable<IRound> {
+    return this.http.get<IRound>(`/api/rounds/${idRound}`);
+  }
 
-    addTrigger(trigger, idRound) {
-        trigger.author = { id: localStorage.getItem('user_id') };
-        return this.http.post<any>('/api/rounds/' + idRound + '/triggers', trigger);
-    }
+  public addTrigger(trigger: Trigger, idRound: number): Observable<IRound> {
+    trigger.author = { id: Number(localStorage.getItem('user_id')) } as User;
 
-    getTrophy(): any {
-        return Observable.create(observer => {
-            const trophyForUser = this.rounds.filter(r => {
-                return r.winner != null
-            })
-            observer.next(trophyForUser);
-            observer.complete();
-        })
-    }
+    return this.http.post<IRound>(`/api/rounds/${idRound}/triggers`, trigger);
+  }
 
-    update(idRound, data) {
-        return this.http.put<any>('/api/rounds/' + idRound, data);
-    }
+  public update(idRound: number, data: Partial<Round>): Observable<IRound> {
+    return this.http.put<IRound>(`/api/rounds/${idRound}`, data);
+  }
 }
