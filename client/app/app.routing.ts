@@ -1,15 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { LoginComponent } from './components/login/login.component';
-import { LandingComponent } from './components/landing/landing.component';
-import { MainboardComponent } from './components/mainboard/mainboard.component';
-import { RoundComponent } from './components/round/round.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { HomeComponent } from './components/home/home.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainboardComponent } from './components/mainboard/mainboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RoundComponent } from './components/round/round.component';
 import { TrophyComponent } from './components/trophy/trophy.component';
 
 const routes: Routes = [
@@ -24,12 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    BrowserModule,
-    RouterModule.forRoot(routes)
-  ],
-  exports: [
-  ],
+  imports: [CommonModule, BrowserModule, RouterModule.forRoot(routes)],
+  exports: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

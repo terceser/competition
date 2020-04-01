@@ -1,44 +1,46 @@
 <div class="wrapper">
-    <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
-        <div class="filter"></div>
-        <div class="container">
+  <div class="page-header" style="background-image: url('../assets/img/login-image.jpg');">
+    <div class="filter"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+          <div class="card-register" style="background-color: rgba(255, 255, 255, 0);" *ngIf="loading">
+            <h3 class="text-center">
+              <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+            </h3>
+          </div>
+          <div class="card card-register" *ngIf="!loading">
+            <h3 class="title" style="margin-top: 0px;">
+              <b>Competition</b>
+            </h3>
+            <div class="alert alert-danger text-center" *ngIf="error">
+              <span>{{ error }}</span>
+            </div>
 
-            <div class="row">
-                <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
-                    <div class="card-register" style="background-color:rgba(255,255,255,0)" *ngIf="loading">
-                        <h3 class="text-center">
-                            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-                        </h3>
-                    </div>
-                    <div class="card card-register" *ngIf="!loading">
-                        <h3 class="title" style="margin-top:0px;">
-                            <b>Competition</b>
-                        </h3>
-                        <div class="alert alert-danger text-center" *ngIf="error">
-                            <span>{{error}}</span>
-                        </div>
-
-                        <!--<div class="social-line text-center">
+            <!--<div class="social-line text-center">
                             <a href="#pablo" class="btn btn-neutral btn-facebook btn-just-icon">
                                 <i class="fa fa-facebook-square"></i>
                             </a>
                         </div>-->
-                        <form (ngSubmit)="login()" class="ng-untouched ng-pristine ng-valid" novalidate>
-                            <label>Email</label>
-                            <input type="text" class="form-control" placeholder="Email" [(ngModel)]="model.email"
-                                name="email">
-                            <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password"
-                                [(ngModel)]="model.password" name="password">
-                            <button class="btn btn-primary btn-block btn-round" type="submit">Login</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="footer register-footer text-center">
-                <h6>© 2017, made with
-                    <i class="fa fa-heart heart"></i> by Terceser</h6>
-            </div>
+            <form (ngSubmit)="login()" class="ng-untouched ng-pristine ng-valid" novalidate>
+              <label>Email</label>
+              <input type="text" class="form-control" placeholder="Email" [(ngModel)]="model.email" name="email" />
+              <label>Password</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                [(ngModel)]="model.password"
+                name="password"
+              />
+              <button class="btn btn-primary btn-block btn-round" type="submit">Login</button>
+            </form>
+          </div>
         </div>
+      </div>
+      <div class="footer register-footer text-center">
+        <h6>© 2017, made with <i class="fa fa-heart heart"></i> by Terceser</h6>
+      </div>
     </div>
+  </div>
 </div>
