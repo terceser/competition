@@ -38,7 +38,7 @@
     "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
     "express": "^4.16.2",
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "jsonwebtoken": "^8.1.0",
     "jw-bootstrap-switch-ng2": "1.0.3",
     "ng2-nouislider": "1.6.1",
