@@ -42,7 +42,7 @@
     "jsonwebtoken": "^8.1.0",
     "jw-bootstrap-switch-ng2": "1.0.3",
     "ng2-nouislider": "1.6.1",
-    "nodemailer": "^4.4.0",
+    "nodemailer": "^6.4.16",
     "nouislider": "9.2.0",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.0",
